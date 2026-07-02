@@ -26,6 +26,8 @@ import {
   Plane,
   Banknote,
   Hash,
+  Menu,
+  X,
 } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube, FaLinkedinIn, FaPinterestP } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
@@ -48,6 +50,7 @@ const ChaseLandingPage = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [chooseSlide, setChooseSlide] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     userId: "",
@@ -104,12 +107,26 @@ const ChaseLandingPage = () => {
           </div>
           
           {/* Row 2: Logo */}
-          <div className="py-2.5">
-            <img src="https://www.chase.com/content/dam/unified-assets/logo/chase/chase-logo/additional-file-formats/logo_chase_headerfooter.svg" alt="Chase Logo" className="h-[28px] object-contain" />
+          <div className="py-2.5 flex items-center justify-between">
+            <img src="https://www.chase.com/content/dam/unified-assets/logo/chase/chase-logo/additional-file-formats/logo_chase_headerfooter.svg" alt="Chase Logo" className="h-[22px] md:h-[28px] object-contain" />
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => document.getElementById("login-box")?.scrollIntoView({ behavior: "smooth" })} 
+                className="md:hidden text-[#0060f0] text-sm font-semibold border border-[#0060f0] px-3 py-1 rounded cursor-pointer"
+              >
+                Sign in
+              </button>
+              <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+                className="md:hidden text-[#111] p-1 cursor-pointer"
+              >
+                {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
           </div>
 
           {/* Row 3: Bottom Links */}
-          <div className="flex items-center gap-[28px] pb-4 pt-1 text-[15px] text-[#111] overflow-x-auto whitespace-nowrap scrollbar-none">
+          <div className="hidden md:flex items-center gap-[28px] pb-4 pt-1 text-[15px] text-[#111] overflow-x-auto whitespace-nowrap scrollbar-none">
             <a className="cursor-pointer hover:underline">Checking</a>
             <a className="cursor-pointer hover:underline">Savings & CDs</a>
             <a className="cursor-pointer hover:underline">Credit cards</a>
@@ -119,6 +136,20 @@ const ChaseLandingPage = () => {
             <a className="cursor-pointer hover:underline">Education & goals</a>
             <a className="cursor-pointer hover:underline">Travel</a>
           </div>
+
+          {/* Mobile Menu Dropdown */}
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-white border-t border-slate-100 py-3 flex flex-col gap-3.5 text-[15px] font-semibold text-[#111] pb-5">
+              <a onClick={() => setMobileMenuOpen(false)} className="cursor-pointer hover:underline">Checking</a>
+              <a onClick={() => setMobileMenuOpen(false)} className="cursor-pointer hover:underline">Savings & CDs</a>
+              <a onClick={() => setMobileMenuOpen(false)} className="cursor-pointer hover:underline">Credit cards</a>
+              <a onClick={() => setMobileMenuOpen(false)} className="cursor-pointer hover:underline">Home loans</a>
+              <a onClick={() => setMobileMenuOpen(false)} className="cursor-pointer hover:underline">Auto</a>
+              <a onClick={() => setMobileMenuOpen(false)} className="cursor-pointer hover:underline">Investing by J.P. Morgan</a>
+              <a onClick={() => setMobileMenuOpen(false)} className="cursor-pointer hover:underline">Education & goals</a>
+              <a onClick={() => setMobileMenuOpen(false)} className="cursor-pointer hover:underline">Travel</a>
+            </div>
+          )}
         </div>
       </header>
 
@@ -150,7 +181,7 @@ const ChaseLandingPage = () => {
           </div>
 
           {/* Right — Login Box */}
-          <div className="bg-white rounded p-4 w-full max-w-[340px] flex-shrink-0 relative z-10" style={{boxShadow: "0 4px 12px rgba(0,0,0,0.1)"}}>
+          <div id="login-box" className="scroll-mt-6 bg-white rounded p-4 w-full max-w-[340px] flex-shrink-0 relative z-10" style={{boxShadow: "0 4px 12px rgba(0,0,0,0.1)"}}>
             <form onSubmit={handleSubmit} className="flex flex-col">
               {errorMsg && (
                 <div className="bg-red-50 border border-red-200 text-red-600 px-3 py-1 rounded text-xs mb-2 flex items-center">

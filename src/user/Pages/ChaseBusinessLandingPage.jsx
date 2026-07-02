@@ -1,10 +1,12 @@
 
-import { Search, ChevronDown, MessageCircle, ArrowRight, Home } from "lucide-react";
+import { useState } from "react";
+import { Search, ChevronDown, MessageCircle, ArrowRight, Home, Menu, X } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube, FaLinkedinIn, FaPinterestP } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
 const ChaseBusinessLandingPage = () => {
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white font-sans text-[#333]">
@@ -29,14 +31,14 @@ const ChaseBusinessLandingPage = () => {
 
       {/* ══════════ MAIN HEADER ══════════ */}
       <header className="max-w-[1400px] mx-auto px-6 py-4 flex justify-between items-center bg-white sticky top-0 z-50">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
+        <div className="flex items-center gap-1 md:gap-2 cursor-pointer" onClick={() => navigate("/")}>
           <img 
             src="https://www.chase.com/content/dam/unified-assets/logo/chase/chase-logo/additional-file-formats/logo_chase_headerfooter.svg" 
             alt="Chase Logo" 
-            className="h-6 filter brightness-0" 
+            className="h-4 sm:h-5 md:h-6 filter brightness-0" 
           />
-          <span className="text-xl font-bold tracking-tight text-[#333]">for BUSINESS</span>
-          <span className="text-[10px] font-bold align-top ml-0.5">SM</span>
+          <span className="text-sm sm:text-base md:text-xl font-bold tracking-tight text-[#333] whitespace-nowrap">for BUSINESS</span>
+          <span className="text-[8px] md:text-[10px] font-bold align-top ml-0.5">SM</span>
         </div>
         
         <nav className="hidden lg:flex items-center gap-6 text-[15px] font-medium text-[#444]">
@@ -48,13 +50,33 @@ const ChaseBusinessLandingPage = () => {
           <a href="#" className="hover:underline decoration-2 underline-offset-4">Resource center</a>
         </nav>
 
-        <button 
-          onClick={() => navigate("/business/login")}
-          className="bg-[#0060f0] hover:bg-[#004dcf] text-white px-5 py-2 rounded text-[15px] font-medium transition-colors cursor-pointer"
-        >
-          Sign in
-        </button>
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={() => navigate("/business/login")}
+            className="bg-[#0060f0] hover:bg-[#004dcf] text-white px-3 py-1.5 md:px-5 md:py-2 rounded text-[13px] md:text-[15px] font-medium transition-colors cursor-pointer"
+          >
+            Sign in
+          </button>
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+            className="lg:hidden text-[#333] p-1 cursor-pointer flex items-center"
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </header>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-[#e8e8e8] py-3 flex flex-col gap-3.5 text-[15px] font-semibold text-[#444] px-6 sticky top-[58px] z-50">
+          <a href="#" onClick={() => setMobileMenuOpen(false)} className="hover:underline">Checking & more</a>
+          <a href="#" onClick={() => setMobileMenuOpen(false)} className="hover:underline">Loans & financing</a>
+          <a href="#" onClick={() => setMobileMenuOpen(false)} className="hover:underline">Accept credit/debit cards</a>
+          <a href="#" onClick={() => setMobileMenuOpen(false)} className="hover:underline">Business credit cards</a>
+          <a href="#" onClick={() => setMobileMenuOpen(false)} className="hover:underline">Help & support</a>
+          <a href="#" onClick={() => setMobileMenuOpen(false)} className="hover:underline">Resource center</a>
+        </div>
+      )}
 
       {/* ══════════ HERO SECTION ══════════ */}
       <section className="bg-[#022851] text-white">
