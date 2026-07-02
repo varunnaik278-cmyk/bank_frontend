@@ -11,15 +11,18 @@ const ChaseBusinessLandingPage = () => {
       {/* ══════════ TOP NAV ══════════ */}
       <div className="border-b border-[#e8e8e8]">
         <div className="max-w-[1400px] mx-auto px-6 py-2 flex justify-between items-center text-[13px]">
-          <div className="flex gap-6">
+          <div className="flex gap-4 md:gap-6">
             <button onClick={() => navigate("/login")} className="hover:underline text-[#333] cursor-pointer">Personal</button>
             <a href="#" className="font-bold border-b-[3px] border-[#0060f0] pb-1.5 -mb-[10px] text-[#333]">Business</a>
             <a href="#" className="hover:underline text-[#333]">Commercial</a>
           </div>
-          <div className="flex gap-6 items-center">
+          <div className="hidden md:flex gap-6 items-center">
             <a href="#" className="hover:underline flex items-center gap-1 text-[#333]">Customer service <ChevronDown size={14} /></a>
             <a href="#" className="hover:underline text-[#333]">Español</a>
             <button className="text-[#333] hover:text-[#0060f0]"><Search size={18} /></button>
+          </div>
+          <div className="flex md:hidden gap-3 items-center">
+            <button className="text-[#333] hover:text-[#0060f0]"><Search size={16} /></button>
           </div>
         </div>
       </div>
@@ -55,10 +58,10 @@ const ChaseBusinessLandingPage = () => {
 
       {/* ══════════ HERO SECTION ══════════ */}
       <section className="bg-[#022851] text-white">
-        <div className="max-w-[1400px] mx-auto px-6 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <div className="max-w-[1400px] mx-auto px-6 py-12 lg:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           
           {/* Hero Left (Text & Image) */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
+          <div className="md:col-span-2 lg:col-span-6 flex flex-col justify-center">
             <h1 className="text-4xl lg:text-5xl font-light mb-5 tracking-tight">Chase for Business</h1>
             <p className="text-[17px] leading-relaxed mb-10 max-w-lg">
               From banking to payment acceptance to credit cards and local support, we offer flexible solutions to help you go far.
@@ -73,7 +76,7 @@ const ChaseBusinessLandingPage = () => {
           </div>
 
           {/* Hero Middle (Promo Card 1) */}
-          <div className="lg:col-span-3 bg-white text-[#333] p-4 flex flex-col h-full shadow-lg">
+          <div className="md:col-span-1 lg:col-span-3 bg-white text-[#333] p-4 flex flex-col h-full shadow-lg">
             <div className="bg-[#0060f0] text-white p-6 text-center border-y-8 border-white shadow-[0_0_0_2px_#022851] mb-6">
               <h2 className="text-[26px] font-medium leading-tight">Earn up to</h2>
               <div className="text-[60px] font-bold leading-none my-1">$500</div>
@@ -91,7 +94,7 @@ const ChaseBusinessLandingPage = () => {
           </div>
 
           {/* Hero Right (Promo Card 2) */}
-          <div className="lg:col-span-3 bg-white text-[#333] flex flex-col h-full shadow-lg">
+          <div className="md:col-span-1 lg:col-span-3 bg-white text-[#333] flex flex-col h-full shadow-lg">
             <img 
               src="pos-tap-to-pay-bakery-rt.avif" 
               alt="Payment terminal" 
@@ -118,8 +121,8 @@ const ChaseBusinessLandingPage = () => {
           <h2 className="text-3xl font-medium mb-12">Let us help you find what you're looking for</h2>
           
           <div className="flex flex-col gap-6 max-w-[600px] mx-auto">
-            <div className="flex items-center gap-4 text-left">
-              <span className="w-32 font-bold text-[#333] text-[15px] text-right">I am looking for</span>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-left">
+              <span className="sm:w-32 font-bold text-[#333] text-[15px] text-left sm:text-right">I am looking for</span>
               <div className="flex-1 relative border-b border-dashed border-[#ccc] pb-1">
                 <select className="w-full appearance-none bg-transparent text-[#0060f0] font-medium text-[16px] outline-none cursor-pointer">
                   <option>Choose an option</option>
@@ -131,8 +134,8 @@ const ChaseBusinessLandingPage = () => {
               </div>
             </div>
             
-            <div className="flex items-center gap-4 text-left">
-              <span className="w-32 font-bold text-[#333] text-[15px] text-right">to</span>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-left">
+              <span className="sm:w-32 font-bold text-[#333] text-[15px] text-left sm:text-right">to</span>
               <div className="flex-1 relative border-b border-dashed border-[#ccc] pb-1">
                 <select className="w-full appearance-none bg-transparent text-[#0060f0] font-medium text-[16px] outline-none cursor-pointer">
                   <option>Choose an option</option>
@@ -322,9 +325,8 @@ const ChaseBusinessLandingPage = () => {
         </div>
       </section>
 
-      {/* ══════════ FOOTER ══════════ */}
       <footer className="bg-white border-t-[3px] border-[#0a3778] pt-12 pb-16 px-6">
-        <div className="max-w-[1400px] mx-16">
+        <div className="max-w-[1400px] mx-auto">
           {/* Logo */}
           <div className="flex flex-col items-start mb-10 select-none">
             <img 
@@ -446,6 +448,7 @@ const ChaseBusinessLandingPage = () => {
                 ))}
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-2 items-center text-[#555]">
+                <a onClick={() => navigate("/admin-login")} className="cursor-pointer hover:underline underline-offset-2 text-[#0060f0] font-medium">Admin Login</a>
                 <a href="#" className="cursor-pointer hover:underline underline-offset-2 text-[#0060f0] font-medium">Give feedback</a>
                 <span>Member FDIC</span>
                 <span className="flex items-center gap-1.5"><Home size={12} className="text-[#555]" /> Equal Housing Opportunity</span>

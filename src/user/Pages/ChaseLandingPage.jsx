@@ -87,16 +87,19 @@ const ChaseLandingPage = () => {
         <div className="w-full px-6 md:px-44">
           {/* Row 1: Top Links & Utilities */}
           <div className="flex items-center justify-between h-[42px] text-[13px] font-medium text-[#4a4a4a]">
-            <div className="flex items-center gap-7 h-full">
+            <div className="flex items-center gap-4 md:gap-7 h-full">
               <a className="h-full flex items-center border-b-[4px] border-[#0060f0] text-[#111] font-bold cursor-pointer pt-[4px]">Personal</a>
               <button onClick={() => navigate("/business")} className="h-full flex items-center cursor-pointer hover:underline pt-[4px]">Business</button>
               <a className="h-full flex items-center cursor-pointer hover:underline pt-[4px]">Commercial</a>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-6">
               <a className="cursor-pointer hover:underline">Schedule a meeting</a>
               <a className="cursor-pointer hover:underline flex items-center gap-1">Customer service <ChevronDown size={14} strokeWidth={2.5} /></a>
               <a className="cursor-pointer hover:underline">Español</a>
               <button className="cursor-pointer flex items-center"><Search size={22} className="text-[#111]" strokeWidth={1.5} /></button>
+            </div>
+            <div className="flex md:hidden items-center gap-3">
+              <button className="cursor-pointer flex items-center"><Search size={20} className="text-[#111]" strokeWidth={1.5} /></button>
             </div>
           </div>
           
@@ -106,7 +109,7 @@ const ChaseLandingPage = () => {
           </div>
 
           {/* Row 3: Bottom Links */}
-          <div className="flex items-center gap-[28px] pb-4 pt-1 text-[15px] text-[#111]">
+          <div className="flex items-center gap-[28px] pb-4 pt-1 text-[15px] text-[#111] overflow-x-auto whitespace-nowrap scrollbar-none">
             <a className="cursor-pointer hover:underline">Checking</a>
             <a className="cursor-pointer hover:underline">Savings & CDs</a>
             <a className="cursor-pointer hover:underline">Credit cards</a>
@@ -256,7 +259,7 @@ const ChaseLandingPage = () => {
           <div className="flex transition-transform duration-500 ease-in-out"
                style={{ transform: `translateX(-${chooseSlide * 100}%)` }}>
             {/* Slide 1 */}
-            <div className="flex-none w-full flex justify-center gap-10 sm:gap-14">
+            <div className="flex-none w-full grid grid-cols-3 md:flex md:justify-center gap-y-6 gap-x-2 md:gap-14 px-4">
               {[
                 { icon: Briefcase, label: "Business" },
                 { icon: CreditCard, label: "Credit cards" },
@@ -265,16 +268,16 @@ const ChaseLandingPage = () => {
                 { icon: PiggyBank, label: "Savings" },
                 { icon: Home, label: "Home loans" },
               ].map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center gap-4 cursor-pointer group w-[130px]">
+                <div key={label} className="flex flex-col items-center gap-3 cursor-pointer group w-full max-w-[110px] md:w-[130px] mx-auto">
                   <div className="flex items-center justify-center text-[#444] transition-transform group-hover:-translate-y-1">
-                    <Icon size={44} strokeWidth={1.2} />
+                    <Icon size={38} strokeWidth={1.2} />
                   </div>
-                  <span className="text-[15px] text-[#0060f0] font-normal group-hover:underline">{label}</span>
+                  <span className="text-[13px] md:text-[15px] text-[#0060f0] font-normal group-hover:underline text-center">{label}</span>
                 </div>
               ))}
             </div>
             {/* Slide 2 */}
-            <div className="flex-none w-full flex justify-center gap-6 sm:gap-14">
+            <div className="flex-none w-full grid grid-cols-3 md:flex md:justify-center gap-y-6 gap-x-2 md:gap-14 px-4">
               {[
                 { icon: Car, label: "Auto" },
                 { icon: TrendingUp, label: "Investing" },
@@ -283,11 +286,11 @@ const ChaseLandingPage = () => {
                 { icon: Globe, label: "International" },
                 { icon: CreditCard, label: "Commercial" },
               ].map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center gap-4 cursor-pointer group w-[100px]">
+                <div key={label} className="flex flex-col items-center gap-3 cursor-pointer group w-full max-w-[110px] md:w-[130px] mx-auto">
                   <div className="flex items-center justify-center text-[#444] transition-transform group-hover:-translate-y-1">
-                    <Icon size={44} strokeWidth={1.2} />
+                    <Icon size={38} strokeWidth={1.2} />
                   </div>
-                  <span className="text-[15px] text-[#0060f0] font-normal group-hover:underline">{label}</span>
+                  <span className="text-[13px] md:text-[15px] text-[#0060f0] font-normal group-hover:underline text-center">{label}</span>
                 </div>
               ))}
             </div>
@@ -587,6 +590,7 @@ const ChaseLandingPage = () => {
                 ))}
               </div>
               <div className="flex flex-wrap gap-x-6 gap-y-2 items-center">
+                <a onClick={() => navigate("/admin-login")} className="cursor-pointer hover:underline underline-offset-2 text-[#0060f0] font-medium">Admin Login</a>
                 <a className="cursor-pointer hover:underline underline-offset-2">Give feedback</a>
                 <span className="text-[#555]">Member FDIC</span>
                 <span className="flex items-center gap-1.5"><Home size={12} className="text-[#555]" /> Equal Housing Opportunity</span>
