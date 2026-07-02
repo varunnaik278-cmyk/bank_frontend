@@ -117,7 +117,7 @@ const AdminDashboard = () => {
         </div>
         <div className="p-6">
           <Link
-            to="/admin/users"
+            to="/admin-login/users"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#004c8f] hover:bg-blue-800 text-white font-medium rounded-lg transition shadow-sm"
           >
             <Users size={18} />

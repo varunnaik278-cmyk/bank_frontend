@@ -44,7 +44,7 @@ const AdminLogin = () => {
 
       if (result?.success) {
         toast.success("Welcome back, Administrator");
-        navigate("/admin/dashboard");
+        navigate("/admin-login/dashboard");
       } else {
         toast.error(result?.message || "Invalid credentials. Please try again.");
       }

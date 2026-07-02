@@ -6,8 +6,8 @@ import LogoutModal from "../../ui/LogoutModal";
 import Modal from "../../ui/Modal";
 
 const NAV_ITEMS = [
-  { path: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { path: "/admin/users", label: "Manage Users", icon: Users },
+  { path: "/admin-login/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { path: "/admin-login/users", label: "Manage Users", icon: Users },
 ];
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {

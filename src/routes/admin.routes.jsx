@@ -7,7 +7,7 @@ import ProtectedRoute from "./protected.route";
 import AdminLoginPage from "../admin/pages/AdminLoginPage";
 
 const AdminRoutes = (
-  <Route path="/admin">
+  <Route path="/admin-login">
     {/* Public Route */}
     <Route index element={<AdminLoginPage />} />
 

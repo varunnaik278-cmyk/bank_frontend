@@ -8,7 +8,7 @@ const LogoutModal = ({ onClose }) => {
 
   const handleLogout = async () => {
     await logout();
-    navigate("/admin");
+    navigate("/admin-login");
   };
 
   return (
