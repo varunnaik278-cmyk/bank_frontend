@@ -17,7 +17,6 @@ const AppRoutes = () => {
           path="/"
           element={<Navigate to="/login" replace />}
         />
-
         {AdminRoutes}
         {UserRoutes}
       </Routes>
