@@ -8,6 +8,8 @@ import {
 import AdminRoutes from "./admin.routes";
 import UserRoutes from "./user.routes";
 
+
+// Test 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
